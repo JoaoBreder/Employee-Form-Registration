@@ -1,2 +1,2 @@
-# Employee-Form-Registration
+# Employee-Registration-Form
 Formulário de cadastro de funcionários, feito em Angular, Typescript e Nodejs, utilizando do Firebase para autenticação e registro em banco não relacional.
