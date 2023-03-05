@@ -1,0 +1,33 @@
+.bodyComponentLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--background-color-login);
+}
+
+.loginContainer,
+.inputContainer,
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loginContainer {
+  width: 52rem;
+  height: 48rem;
+
+  background: var(--secondary-color);
+  box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+}
+
+.inputContainer {
+  margin: 4rem 0 3rem 0;
+}
+
+.emailInput {
+  margin-bottom: 2rem;
+}

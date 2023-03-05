@@ -1,1 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+html {
+  margin: 0;
+  height: 100%;
+  font-size: 62.5%;
+
+  --primary-color: #4947BF;
+  --secondary-color: #FFFFFF;
+  --third-color: #F9F9F9;
+  --fourth-color: #000000;
+
+  --primary-font-color: #000000;
+  --secondary-font-color: var(--secondary-color);
+  --accent-color: var(--primary-color);
+
+  --header-color: var(--primary-color);
+  --background-color: var(--third-color);
+  --background-color-login: var(--primary-color);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0;
+  height: 100%;
+
+  font-family: 'Roboto', sans-serif;
+}
+
+.bodyComponent {
+  height: 100vh;
+  width: 100vw;
+}
+
+button {
+  width: 12rem;
+  height: 4.2rem;
+
+  background-color: var(--primary-color);
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  border: 0;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 2.3rem;
+
+  color: var(--secondary-font-color);
+}
+
+button:hover {
+  cursor: pointer;
+  filter: brightness(115%);
+  transition: 300ms;
+}
+
+input {
+  width: 37rem;
+  height: 4rem;
+
+  padding-left: 1.5rem;
+
+  background-color: var(--secondary-color);
+  border: 0.2rem solid rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+}
+
+input::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+h1 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2.6rem;
+  line-height: 3rem;
+  margin: 0;
+}
