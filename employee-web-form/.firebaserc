@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "employee-web-form": {
+      "hosting": {
+        "employee-web-form": [
+          "employee-web-form"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "employee-web-form"
+  }
+}
