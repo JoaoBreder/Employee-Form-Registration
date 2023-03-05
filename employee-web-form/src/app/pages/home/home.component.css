@@ -1,0 +1,17 @@
+.bodyComponentHome {
+  background-color: var(--background-color);
+}
+
+.headerContainer {
+  width: 100%;
+  height: 8rem;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 4rem;
+
+  background-color: var(--header-color);
+
+  color: var(--secondary-font-color);
+}
