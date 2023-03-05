@@ -2,13 +2,14 @@
   <div class="loginContainer">
     <h1>Login</h1>
 
-    <form>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="inputContainer">
-        <input class="emailInput" placeholder="Email">
-        <input class="passwordInput" placeholder="Senha">
+        <input formControlName="email" class="emailInput" placeholder="Email">
+        <input type="password" formControlName="password" class="passwordInput" placeholder="Senha">
       </div>
 
       <button>
+        <span *ngIf="loading" class="loading"></span>
         Entrar
       </button>
     </form>
