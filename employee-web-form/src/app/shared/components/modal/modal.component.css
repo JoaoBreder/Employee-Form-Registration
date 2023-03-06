@@ -1,3 +1,7 @@
+* {
+  z-index: 1000000;
+}
+
 .bodyComponentModal {
   position: absolute;
   flex-direction: column;
