@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
+
 import { TableComponent } from './shared/components/table/table.component';
+import { ModalModule } from './shared/components/modal/modal.module';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
@@ -34,7 +36,7 @@ registerLocaleData(pt);
     AppComponent,
     LoginComponent,
     HomeComponent,
-    TableComponent
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ registerLocaleData(pt);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    ModalModule
   ],
   providers: [
     AuthService,

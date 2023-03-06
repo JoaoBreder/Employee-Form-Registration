@@ -22,3 +22,16 @@ h1 {
 .bodyContainer {
   padding: 2rem;
 }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+button {
+  font-size: 1.6rem;
+  width: 15rem;
+  margin: 0 2rem;
+}
