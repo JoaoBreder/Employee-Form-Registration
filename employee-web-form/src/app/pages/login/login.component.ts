@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,13 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class LoginComponent implements OnInit {
   form!: FormGroup;
   loading = false;
-  submitted = false;
+  errMessage = '';
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private notification: NzNotificationService
   ) { }
 
   ngOnInit(): void {
@@ -29,9 +31,11 @@ export class LoginComponent implements OnInit {
   get f() { return this.form.controls; }
 
   async onSubmit() {
-    this.submitted = true;
-
-    if (this.form.invalid) return;
+    if (this.form.invalid) {
+      this.errMessage = 'Informe seu Email e sua Senha.';
+      this.sendNotification();
+      return;
+    }
 
     this.loading = true;
 
@@ -43,8 +47,20 @@ export class LoginComponent implements OnInit {
           this.loading = false;
       })
       .catch((error) => {
-        alert(error.message)
+        if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password' || error.code === 'auth/invalid-email' || error.code === 'auth/user-disabled') {
+          this.errMessage = 'Senha ou email incorretos. Verifique.';
+        }
+
+        if (error.code === 'auth/too-many-requests') {
+          this.errMessage = 'Você excedeu o número de tentativas de login. Por favor, tente novamente mais tarde.';
+        }
+
         this.loading = false;
+        this.sendNotification();
       });
+  }
+
+  private sendNotification(): void {
+    this.notification.error('Erro na Autenticação', this.errMessage);
   }
 }

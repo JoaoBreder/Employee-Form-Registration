@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,16 @@ import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { AuthService } from './core/services/auth/auth.service';
 import { AuthGuard } from './core/guards/authGuard/auth-guard';
 
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { registerLocaleData } from '@angular/common';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { pt_BR } from 'ng-zorro-antd/i18n';
+import pt from '@angular/common/locales/pt';
+
+registerLocaleData(pt);
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,10 +41,15 @@ import { AuthGuard } from './core/guards/authGuard/auth-guard';
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase()),
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
   ],
   providers: [
     AuthService,
-    AuthGuard
+    AuthGuard,
+    NzNotificationService,
+    { provide: NZ_I18N, useValue: pt_BR }
   ],
   bootstrap: [
     AppComponent
