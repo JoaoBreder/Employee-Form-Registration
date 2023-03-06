@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-modal',
@@ -15,7 +16,8 @@ export class ModalComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private notification: NzNotificationService
+    private notification: NzNotificationService,
+    private modal: NzModalService
   ) { }
 
   ngOnInit(): void {
@@ -78,5 +80,18 @@ export class ModalComponent implements OnInit {
       this.loading = false;
       this.toggle();
     }, 500);
+  }
+
+  async onCancel() {
+    this.modal.confirm({
+      nzTitle: 'Tem certeza que deseja cancelar?',
+      nzContent: 'Ao clicar no botão Ok, você confirma que deseja cancelar o cadastramento desse funcionário e perder todos os dados informados.',
+      nzOnOk: () => {
+        this.form.reset();
+        this.toggle();
+      },
+      nzOnCancel: () => { return },
+      nzClosable: false
+    });
   }
 }
