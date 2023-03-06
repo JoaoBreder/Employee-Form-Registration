@@ -9,8 +9,9 @@
 
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  padding-left: 4rem;
+  padding: 0 4rem;
 
   background-color: var(--header-color);
 }
@@ -34,4 +35,12 @@ button {
   font-size: 1.6rem;
   width: 15rem;
   margin: 0 2rem;
+}
+
+.buttonLogout {
+  background-color: var(--button-cancel-color);
+}
+
+.loading {
+  width: 10%;
 }
