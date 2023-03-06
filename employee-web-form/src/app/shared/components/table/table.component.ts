@@ -1,28 +1,22 @@
 import { Component } from '@angular/core';
-import { Table } from '../../models/table';
+import { Funcionario } from '../../models/funcionario';
 
-const TABLE_DATA: Table[] = [
+const TABLE_DATA: Funcionario[] = [
   {
+    ativo: true,
     foto: 'foto',
-    nome: 'teste',
+    nome: 'Funcionário Teste',
+    cpf: '026.249.453-18',
     email: 'teste@email.com',
     dataContratacao: '03/03/2023',
-    ativo: 'Sim',
+    endereco: {
+      rua: 'Rua',
+      cep: 'CEP',
+      bairro: 'Bairro',
+      cidade: 'Cidade',
+      estado: 'Estado',
+    }
   },
-  {
-    foto: 'foto',
-    nome: 'teste 2',
-    email: 'teste2@email.com',
-    dataContratacao: '04/03/2023',
-    ativo: 'Sim',
-  },
-  {
-    foto: 'foto',
-    nome: 'teste 3',
-    email: 'teste3@email.com',
-    dataContratacao: '05/03/2023',
-    ativo: 'Não',
-  }
 ];
 
 

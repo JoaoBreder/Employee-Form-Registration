@@ -7,60 +7,64 @@
         <div class="line"></div>
       </div>
 
-      <form>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="inputBox">
           <div class="inputContainer inputMargin">
             <label>Nome</label>
-            <input>
+            <input formControlName="nome">
           </div>
 
           <div class="inputContainer">
             <label>CPF</label>
-            <input>
+            <input formControlName="cpf">
           </div>
         </div>
 
         <div class="inputContainer">
           <label>Email</label>
-          <input>
+          <input formControlName="email">
         </div>
 
         <div class="inputContainer">
           <label>Data de Contratação</label>
-          <input>
+          <input formControlName="dataContratacao">
         </div>
 
         <div class="inputBox">
           <div class="inputContainer inputMargin">
             <label>Rua</label>
-            <input>
+            <input formControlName="rua">
           </div>
 
           <div class="inputContainer inputMargin">
             <label>CEP</label>
-            <input>
+            <input formControlName="cep">
           </div>
         </div>
 
         <div class="inputBox">
           <div class="inputContainer inputMargin">
             <label>Bairro</label>
-            <input>
+            <input formControlName="bairro">
           </div>
 
           <div class="inputContainer inputMargin">
             <label>Cidade</label>
-            <input>
+            <input formControlName="cidade">
           </div>
 
           <div class="inputContainer">
             <label>Estado</label>
-            <input>
+            <input formControlName="estado">
           </div>
         </div>
 
         <div class="buttons">
-          <button class="buttonSalvar" (click)="toggle()">Salvar</button>
+          <button type="submit" class="buttonSalvar">
+            <span *ngIf="loading" class="loading"></span>
+            Salvar
+          </button>
+
           <button class="buttonCancelar" (click)="toggle()">Cancelar</button>
         </div>
       </form>

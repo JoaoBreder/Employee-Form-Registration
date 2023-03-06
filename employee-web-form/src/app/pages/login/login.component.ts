@@ -11,8 +11,8 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 })
 export class LoginComponent implements OnInit {
   form!: FormGroup;
-  loading = false;
-  errMessage = '';
+  loading: boolean = false;
+  errMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,

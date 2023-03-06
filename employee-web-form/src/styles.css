@@ -106,3 +106,15 @@ label {
 
   color: var(--primary-font-color);
 }
+
+.loading {
+  width: 15%;
+  aspect-ratio: 1 / 1;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 0.3rem solid white;
+  border-radius: 50%;
+  border-bottom-color: transparent;
+
+  animation: rotation 1s linear infinite;
+}
