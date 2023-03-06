@@ -1,5 +1,6 @@
 .bodyComponentHome {
   background-color: var(--background-color);
+  flex-direction: column;
 }
 
 .headerContainer {
@@ -12,6 +13,12 @@
   padding-left: 4rem;
 
   background-color: var(--header-color);
+}
 
+h1 {
   color: var(--secondary-font-color);
+}
+
+.bodyContainer {
+  padding: 2rem;
 }
