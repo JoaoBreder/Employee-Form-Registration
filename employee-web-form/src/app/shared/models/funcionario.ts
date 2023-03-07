@@ -1,10 +1,10 @@
 export interface Funcionario {
-  uid: string;
   ativo: boolean;
+  cpf: string;
+  dataContratacao: string;
+  email: string;
+  endereco: object;
   foto: string;
   nome: string;
-  cpf: string;
-  email: string;
-  dataContratacao: string;
-  endereco: object;
+  uid: string | null | undefined;
 }

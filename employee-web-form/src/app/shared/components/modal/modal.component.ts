@@ -68,11 +68,33 @@ export class ModalComponent implements OnInit {
 
     this.loading = true;
 
+    const {
+      nome,
+      cpf,
+      email,
+      dataContratacao,
+      rua,
+      cep,
+      bairro,
+      cidade,
+      estado
+    } = this.funcionarioForm.value;
+
     const item: Funcionario = {
-      ...this.funcionarioForm.value,
-      uid: this.authService.currentUser?.uid,
       ativo: true,
-      foto: 'foto'
+      cpf,
+      dataContratacao,
+      email,
+      endereco: {
+        rua,
+        cep,
+        bairro,
+        cidade,
+        estado
+      },
+      foto: 'foto',
+      uid: this.authService.currentUser?.uid,
+      nome,
     };
 
     this.firestore.saveFuncionario(item);
