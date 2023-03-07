@@ -14,9 +14,17 @@
             <input formControlName="nome">
           </div>
 
-          <div class="inputContainer">
+          <div class="inputContainer inputMargin">
             <label>CPF</label>
-            <input formControlName="cpf">
+            <input formControlName="cpf" maxlength="11">
+          </div>
+
+          <div class="inputContainer">
+            <label>Ativo</label>
+            <select formControlName="ativo">
+              <option value="true">Sim</option>
+              <option value="false">Não</option>
+            </select>
           </div>
         </div>
 
@@ -27,7 +35,7 @@
 
         <div class="inputContainer">
           <label>Data de Contratação</label>
-          <input formControlName="dataContratacao">
+          <input formControlName="dataContratacao" maxlength="8">
         </div>
 
         <div class="inputBox">
@@ -38,7 +46,7 @@
 
           <div class="inputContainer inputMargin">
             <label>CEP</label>
-            <input formControlName="cep">
+            <input formControlName="cep" maxlength="8">
           </div>
         </div>
 
@@ -55,7 +63,7 @@
 
           <div class="inputContainer">
             <label>Estado</label>
-            <input formControlName="estado">
+            <input formControlName="estado" maxlength="2">
           </div>
         </div>
 

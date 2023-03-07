@@ -74,7 +74,8 @@ button:hover {
   border-radius: 5rem;
 }
 
-input {
+input,
+select {
   width: 37rem;
   height: 4rem;
 

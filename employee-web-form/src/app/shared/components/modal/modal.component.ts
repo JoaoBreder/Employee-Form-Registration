@@ -27,6 +27,7 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.funcionarioForm = this.formBuilder.group({
+      ativo: ['', Validators.required],
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
       email: ['', Validators.required],
@@ -77,11 +78,12 @@ export class ModalComponent implements OnInit {
       cep,
       bairro,
       cidade,
-      estado
+      estado,
+      ativo
     } = this.funcionarioForm.value;
 
     const item: Funcionario = {
-      ativo: true,
+      ativo: ativo === 'true',
       cpf,
       dataContratacao,
       email,
