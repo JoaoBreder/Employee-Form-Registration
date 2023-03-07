@@ -3,6 +3,7 @@ import { Funcionario } from '../../models/funcionario';
 
 const TABLE_DATA: Funcionario[] = [
   {
+    uid: 'teste',
     ativo: true,
     foto: 'foto',
     nome: 'Funcionário Teste',

@@ -13,12 +13,12 @@ import { TableComponent } from './shared/components/table/table.component';
 import { ModalModule } from './shared/components/modal/modal.module';
 
 import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
 import { environment } from 'src/environments/environment';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { provideAuth, getAuth } from '@angular/fire/auth';
-import { provideDatabase, getDatabase } from '@angular/fire/database';
 
 import { AuthService } from './core/services/auth/auth.service';
+import { FirestoreService } from './core/services/firestore/firestore.service';
 import { AuthGuard } from './core/guards/authGuard/auth-guard';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -42,18 +42,18 @@ registerLocaleData(pt);
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideDatabase(() => getDatabase()),
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
-    ModalModule
+    ModalModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
   ],
   providers: [
     AuthService,
+    FirestoreService,
     AuthGuard,
     NzNotificationService,
     { provide: NZ_I18N, useValue: pt_BR }

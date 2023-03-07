@@ -1,4 +1,5 @@
 export interface Funcionario {
+  uid: string;
   ativo: boolean;
   foto: string;
   nome: string;
