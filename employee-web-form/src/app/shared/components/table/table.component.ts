@@ -1,24 +1,6 @@
 import { Component } from '@angular/core';
 import { Funcionario } from '../../models/funcionario';
-
-const TABLE_DATA: Funcionario[] = [
-  {
-    uid: 'teste',
-    ativo: true,
-    foto: 'foto',
-    nome: 'Funcionário Teste',
-    cpf: '026.249.453-18',
-    email: 'teste@email.com',
-    dataContratacao: '03/03/2023',
-    endereco: {
-      rua: 'Rua',
-      cep: 'CEP',
-      bairro: 'Bairro',
-      cidade: 'Cidade',
-      estado: 'Estado',
-    }
-  },
-];
+import { FirestoreService } from 'src/app/core/services/firestore/firestore.service';
 
 
 @Component({
@@ -28,5 +10,11 @@ const TABLE_DATA: Funcionario[] = [
 })
 export class TableComponent {
   columns: string[] = ['foto', 'nome', 'email', 'dataContratacao', 'ativo'];
-  tableData = TABLE_DATA;
+  tableData: Funcionario[] = [];
+
+  constructor(private firestore: FirestoreService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.tableData = await this.firestore.getFuncionarios();
+  }
 }

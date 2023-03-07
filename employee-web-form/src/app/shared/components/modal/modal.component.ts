@@ -48,7 +48,9 @@ export class ModalComponent implements OnInit {
       'Erro ao Salvar Funcionário' :
       'Sucesso';
 
-    type ? this.notification.error(title, this.message) : this.notification.success(title, this.message);
+    type === 'error' ?
+      this.notification.error(title, this.message) :
+      this.notification.success(title, this.message);
   }
 
   get f() { return this.funcionarioForm.controls; }

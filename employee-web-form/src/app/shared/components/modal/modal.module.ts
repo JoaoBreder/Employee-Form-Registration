@@ -11,7 +11,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule,
+    FormsModule
   ],
   exports: [
     ModalComponent,
