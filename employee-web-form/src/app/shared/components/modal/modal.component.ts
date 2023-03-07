@@ -116,7 +116,7 @@ export class ModalComponent implements OnInit {
         this.toggle();
       },
       nzOnCancel: () => { return },
-      nzClosable: false
+      nzClosable: false,
     });
   }
 }

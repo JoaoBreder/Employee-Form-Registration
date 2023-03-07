@@ -37,7 +37,8 @@ body {
   width: 100vw;
 }
 
-button {
+button,
+.ant-btn {
   width: 12rem;
   height: 4.2rem;
 
@@ -54,10 +55,23 @@ button {
   color: var(--secondary-font-color);
 }
 
+.ant-btn {
+  font-size: 1.6rem;
+  background-color: var(--button-cancel-color);
+}
+
+.ant-btn-primary {
+  background-color: var(--primary-color);
+}
+
 button:hover {
   cursor: pointer;
   filter: brightness(115%);
   transition: 300ms;
+}
+
+.ant-modal-body {
+  border-radius: 5rem;
 }
 
 input {
