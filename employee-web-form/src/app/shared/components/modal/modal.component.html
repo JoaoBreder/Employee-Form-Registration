@@ -8,6 +8,11 @@
       </div>
 
       <form [formGroup]="funcionarioForm" (ngSubmit)="onSubmit()">
+        <div class="inputContainer">
+          <label>Foto</label>
+          <input class="fileInput" type="file" formControlName="foto" (change)="onFileChange($event)">
+        </div>
+
         <div class="inputBox">
           <div class="inputContainer inputMargin">
             <label>Nome</label>

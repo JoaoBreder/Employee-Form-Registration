@@ -1,7 +1,9 @@
 <table mat-table [dataSource]="tableData">
   <ng-container matColumnDef="foto">
     <th mat-header-cell *matHeaderCellDef>Foto</th>
-    <td mat-cell *matCellDef="let element">{{element.foto}}</td>
+    <td mat-cell *matCellDef="let element">
+      <img src="{{element.foto}}" />
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="nome">

@@ -28,6 +28,8 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     this.funcionarioForm = this.formBuilder.group({
       ativo: ['', Validators.required],
+      foto: ['', Validators.required],
+      file: ['', Validators.required],
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
       email: ['', Validators.required],
@@ -42,6 +44,18 @@ export class ModalComponent implements OnInit {
 
   toggle() {
     this.mostrarModal = !this.mostrarModal
+  }
+
+  onFileChange(e: any) {
+    if (e.target.files.length > 0) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.funcionarioForm.patchValue({ file: reader.result });
+      };
+    }
   }
 
   private sendNotification(type: string): void {
@@ -79,7 +93,8 @@ export class ModalComponent implements OnInit {
       bairro,
       cidade,
       estado,
-      ativo
+      ativo,
+      file
     } = this.funcionarioForm.value;
 
     const item: Funcionario = {
@@ -94,7 +109,7 @@ export class ModalComponent implements OnInit {
         cidade,
         estado
       },
-      foto: 'foto',
+      foto: file,
       uid: this.authService.currentUser?.uid,
       nome,
     };
