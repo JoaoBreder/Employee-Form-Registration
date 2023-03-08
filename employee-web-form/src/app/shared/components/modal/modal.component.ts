@@ -4,6 +4,7 @@ import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { FirestoreService } from 'src/app/core/services/firestore/firestore.service';
+import { SendDataService } from 'src/app/core/services/sendData/send-data.service';
 import { Funcionario } from '../../models/funcionario';
 
 @Component({
@@ -22,7 +23,8 @@ export class ModalComponent implements OnInit {
     private notification: NzNotificationService,
     private modal: NzModalService,
     private authService: AuthService,
-    private firestore: FirestoreService
+    private firestore: FirestoreService,
+    private sendData: SendDataService
   ) { }
 
   ngOnInit(): void {
@@ -117,6 +119,7 @@ export class ModalComponent implements OnInit {
     this.firestore.saveFuncionario(item);
 
     setTimeout(() => {
+      this.sendData.sendFuncionario(item);
       this.funcionarioForm.reset();
       this.loading = false;
       this.sendNotification('success');

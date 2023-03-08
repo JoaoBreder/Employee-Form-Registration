@@ -19,6 +19,7 @@ import { environment } from 'src/environments/environment';
 
 import { AuthService } from './core/services/auth/auth.service';
 import { FirestoreService } from './core/services/firestore/firestore.service';
+import { SendDataService } from './core/services/sendData/send-data.service';
 import { AuthGuard } from './core/guards/authGuard/auth-guard';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -54,6 +55,7 @@ registerLocaleData(pt);
   providers: [
     AuthService,
     FirestoreService,
+    SendDataService,
     AuthGuard,
     NzNotificationService,
     { provide: NZ_I18N, useValue: pt_BR }
