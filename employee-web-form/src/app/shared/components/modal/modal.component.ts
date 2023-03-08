@@ -34,13 +34,13 @@ export class ModalComponent implements OnInit {
       file: ['', Validators.required],
       nome: ['', Validators.required],
       cpf: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       dataContratacao: ['', Validators.required],
       rua: ['', Validators.required],
       cep: ['', Validators.required],
       bairro: ['', Validators.required],
       cidade: ['', Validators.required],
-      estado: ['', Validators.required]
+      estado: ['', [Validators.required, Validators.minLength(2)]]
     });
   }
 
@@ -72,13 +72,43 @@ export class ModalComponent implements OnInit {
 
   get f() { return this.funcionarioForm.controls; }
 
-  getFieldValue(field: string) {
+  private getFieldValue(field: string) {
     return this.f[field].value;
+  }
+
+  private getFormErros(controls: any): any {
+    const fields = ['email', 'ativo', 'foto', 'file', 'nome', 'cpf', 'dataContratacao', 'rua', 'cep', 'bairro', 'cidade', 'estado'];
+    let error = '';
+
+    fields.forEach((field) => {
+      if (controls[field].errors) {
+        controls[field].errors.required ?
+          error = `${field} required` :
+          error = `${field} other`;
+      }
+    })
+
+    return error;
   }
 
   async onSubmit() {
     if (this.funcionarioForm.invalid) {
-      this.message = 'Preencha todos os campos do formulário.';
+      const error = this.getFormErros(this.funcionarioForm.controls);
+
+      switch (error) {
+        case 'email other':
+          this.message = 'Email informado é inválido.';
+          break;
+
+        case 'estado other':
+          this.message = 'Informe a sigla do seu estado corretamente.';
+          break;
+
+        default:
+          this.message = 'Preencha todos os campos do formulário.';
+          break;
+      }
+
       this.sendNotification('error');
       return;
     }

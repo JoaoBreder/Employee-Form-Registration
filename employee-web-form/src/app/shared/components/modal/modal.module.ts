@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ModalComponent } from './modal.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -11,13 +12,16 @@ import { NzModalService } from 'ng-zorro-antd/modal';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   exports: [
     ModalComponent,
   ],
   providers: [
     NzModalService,
+    provideNgxMask()
   ]
 })
 export class ModalModule {
