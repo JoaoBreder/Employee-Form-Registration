@@ -72,10 +72,6 @@ export class ModalComponent implements OnInit {
 
   get f() { return this.funcionarioForm.controls; }
 
-  private getFieldValue(field: string) {
-    return this.f[field].value;
-  }
-
   private getFormErros(controls: any): any {
     const fields = ['email', 'ativo', 'foto', 'file', 'nome', 'cpf', 'dataContratacao', 'rua', 'cep', 'bairro', 'cidade', 'estado'];
     let error = '';
@@ -89,6 +85,25 @@ export class ModalComponent implements OnInit {
     })
 
     return error;
+  }
+
+  private formatarCpf(cpf: string) {
+    return cpf
+      .replace(/[^\d]/g, '')
+      .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+  }
+
+  private formatarCep(cep: string) {
+    return cep
+      .replace(/\D/g, '')
+      .replace(/(\d{5})(\d)/, '$1-$2')
+      .replace(/(-\d{3})\d+?$/, '$1')
+  }
+
+  private formatarData(data: string) {
+    return data
+      .replace(/(\d{2})(\d)/, '$1/$2')
+      .replace(/(\d{2})(\d)/, '$1/$2');
   }
 
   async onSubmit() {
@@ -131,12 +146,12 @@ export class ModalComponent implements OnInit {
 
     const item: Funcionario = {
       ativo: ativo === 'true',
-      cpf,
-      dataContratacao,
+      cpf: this.formatarCpf(cpf),
+      dataContratacao: this.formatarData(dataContratacao),
       email,
       endereco: {
         rua,
-        cep,
+        cep: this.formatarCep(cep),
         bairro,
         cidade,
         estado
